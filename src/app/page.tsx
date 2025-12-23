@@ -128,6 +128,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => {
+          handleFileChange(e.target.files?.[0] || null);
+          e.target.value = "";
+        }}
+      />
 
       {/* Centered Container for ALL content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
@@ -164,7 +174,6 @@ export default function Home() {
                   <Upload className="w-8 h-8 text-gray-400" />
                 </div>
                 <p className="text-gray-500 font-medium">Drop image or click to upload</p>
-                <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { handleFileChange(e.target.files?.[0] || null); e.target.value = ''; }} />
               </div>
             ) : (
               <div
@@ -247,7 +256,6 @@ export default function Home() {
               >
                 <Upload className="w-4 h-4" /> Change Image
               </button>
-              <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { handleFileChange(e.target.files?.[0] || null); e.target.value = ''; }} />
               <button
                 onClick={handleExport}
                 disabled={isExporting || !image}
