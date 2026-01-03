@@ -176,23 +176,28 @@ export default function Home() {
                 <p className="text-gray-500 font-medium">Drop image or click to upload</p>
               </div>
             ) : (
-              <div
-                ref={previewRef}
-                className={`w-full rounded-2xl flex items-center justify-center overflow-hidden ${backgroundType === "gradient" ? selectedGradient.class : ""}`}
-                style={{
-                  padding: `${padding}px`,
-                  background: backgroundType === "solid" ? selectedColor.color : undefined,
-                }}
-              >
-                <img
-                  src={image}
-                  alt="Preview"
-                  className="max-w-full max-h-[60vh] object-contain"
+              <div className="w-full max-h-[70vh] overflow-auto rounded-2xl">
+                <div
+                  ref={previewRef}
+                  className={`inline-flex items-center justify-center ${backgroundType === "gradient" ? selectedGradient.class : ""}`}
                   style={{
-                    borderRadius: `${borderRadius}px`,
-                    boxShadow: getShadowStyle(),
+                    padding: `${padding}px`,
+                    background: backgroundType === "solid" ? selectedColor.color : undefined,
+                    minWidth: "100%",
                   }}
-                />
+                >
+                  <img
+                    src={image}
+                    alt="Preview"
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                      display: "block",
+                      borderRadius: `${borderRadius}px`,
+                      boxShadow: getShadowStyle(),
+                    }}
+                  />
+                </div>
               </div>
             )}
           </div>
