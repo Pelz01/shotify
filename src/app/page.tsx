@@ -113,7 +113,9 @@ export default function Home() {
       const link = document.createElement("a");
       link.download = `shotify-export-${Date.now()}.png`;
       link.href = dataUrl;
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
     } catch (error) {
       console.error("Export failed:", error);
     } finally {
