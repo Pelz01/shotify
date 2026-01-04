@@ -31,6 +31,18 @@ const GRADIENTS = [
   { id: "coral", name: "Coral Reef", css: "linear-gradient(to bottom right, #ff9a9e, #fecfef, #fecfef)" },
   { id: "slate-gray", name: "Slate Gray", css: "linear-gradient(to bottom right, #bdc3c7, #2c3e50)" },
   { id: "warm", name: "Warm Glow", css: "linear-gradient(to bottom right, #f093fb, #f5576c)" },
+  // New gradients from uiGradients
+  { id: "solid-vault", name: "Solid Vault", css: "linear-gradient(to right, #3a7bd5, #3a6073)" },
+  { id: "bright-vault", name: "Bright Vault", css: "linear-gradient(to right, #00d2ff, #928dab)" },
+  { id: "politics", name: "Politics", css: "linear-gradient(to right, #2196f3, #f44336)" },
+  { id: "sweet-morning", name: "Sweet Morning", css: "linear-gradient(to right, #ff5f6d, #ffc371)" },
+  { id: "sylvia", name: "Sylvia", css: "linear-gradient(to right, #ff4b1f, #ff9068)" },
+  { id: "transfile", name: "Transfile", css: "linear-gradient(to right, #16bffd, #cb3066)" },
+  { id: "tranquil", name: "Tranquil", css: "linear-gradient(to right, #eecda3, #ef629f)" },
+  { id: "red-ocean", name: "Red Ocean", css: "linear-gradient(to right, #1d4350, #a43931)" },
+  { id: "shahabi", name: "Shahabi", css: "linear-gradient(to right, #a80077, #66ff00)" },
+  { id: "alihossein", name: "Alihossein", css: "linear-gradient(to right, #f7ff00, #db36a4)" },
+  { id: "ali", name: "Ali", css: "linear-gradient(to right, #ff4b1f, #1fddff)" },
 ];
 
 // Solid Colors
@@ -241,8 +253,8 @@ export default function Home() {
                         key={opt.id}
                         onClick={() => setSelectedGradient(opt)}
                         className={`aspect-square rounded-full border-2 transition-all hover:scale-110 ${selectedGradient.id === opt.id
-                            ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
-                            : "border-gray-200"
+                          ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
+                          : "border-gray-200"
                           }`}
                         style={{ background: opt.css }}
                         title={opt.name}
@@ -253,8 +265,8 @@ export default function Home() {
                         key={opt.id}
                         onClick={() => setSelectedColor(opt)}
                         className={`aspect-square rounded-full border-2 transition-all hover:scale-110 ${selectedColor.id === opt.id
-                            ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
-                            : "border-gray-200"
+                          ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
+                          : "border-gray-200"
                           }`}
                         style={{ background: opt.color }}
                         title={opt.name}
