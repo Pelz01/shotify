@@ -9,28 +9,28 @@ import {
   ChevronUp,
 } from "lucide-react";
 
-// Premium Gradient Options
+// Premium Gradient Options - now with inline CSS values for reliable export
 const GRADIENTS = [
-  { id: "mint-fresh", name: "Mint Fresh", class: "bg-gradient-to-br from-[#4ade80] to-[#2dd4bf]" },
-  { id: "nebula", name: "Nebula", class: "bg-gradient-to-br from-[#6366f1] via-[#a855f7] to-[#ec4899]" },
-  { id: "sunset", name: "Sunset", class: "bg-gradient-to-br from-[#f43f5e] via-[#f97316] to-[#f59e0b]" },
-  { id: "ocean", name: "Deep Ocean", class: "bg-gradient-to-br from-[#0e7490] via-[#0284c7] to-[#1d4ed8]" },
-  { id: "aurora", name: "Aurora", class: "bg-gradient-to-br from-[#10b981] via-[#3b82f6] to-[#8b5cf6]" },
-  { id: "midnight", name: "Midnight", class: "bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155]" },
-  { id: "cotton-candy", name: "Cotton Candy", class: "bg-gradient-to-br from-[#fbc2eb] via-[#a6c1ee] to-[#c2e9fb]" },
-  { id: "cyber", name: "Cyberpunk", class: "bg-gradient-to-br from-[#ff00cc] via-[#333399] to-[#6600ff]" },
-  { id: "lime", name: "Neon Lime", class: "bg-gradient-to-br from-[#84ffc9] via-[#aab2ff] to-[#eca0ff]" },
-  { id: "gold", name: "Gold Dust", class: "bg-gradient-to-br from-[#bf953f] via-[#fcf6ba] to-[#b38728]" },
-  { id: "peach", name: "Soft Peach", class: "bg-gradient-to-br from-[#ffecd2] to-[#fcb69f]" },
-  { id: "royal", name: "Royal Purple", class: "bg-gradient-to-br from-[#667eea] to-[#764ba2]" },
-  { id: "cherry", name: "Cherry Blossom", class: "bg-gradient-to-br from-[#ffecd2] via-[#fcb69f] to-[#ee9ca7]" },
-  { id: "arctic", name: "Arctic", class: "bg-gradient-to-br from-[#e0eafc] to-[#cfdef3]" },
-  { id: "fire", name: "Fire", class: "bg-gradient-to-br from-[#f12711] to-[#f5af19]" },
-  { id: "forest", name: "Forest", class: "bg-gradient-to-br from-[#134e5e] to-[#71b280]" },
-  { id: "berry", name: "Berry", class: "bg-gradient-to-br from-[#8e2de2] to-[#4a00e0]" },
-  { id: "coral", name: "Coral Reef", class: "bg-gradient-to-br from-[#ff9a9e] via-[#fecfef] to-[#fecfef]" },
-  { id: "slate-gray", name: "Slate Gray", class: "bg-gradient-to-br from-[#bdc3c7] to-[#2c3e50]" },
-  { id: "warm", name: "Warm Glow", class: "bg-gradient-to-br from-[#f093fb] to-[#f5576c]" },
+  { id: "mint-fresh", name: "Mint Fresh", css: "linear-gradient(to bottom right, #4ade80, #2dd4bf)" },
+  { id: "nebula", name: "Nebula", css: "linear-gradient(to bottom right, #6366f1, #a855f7, #ec4899)" },
+  { id: "sunset", name: "Sunset", css: "linear-gradient(to bottom right, #f43f5e, #f97316, #f59e0b)" },
+  { id: "ocean", name: "Deep Ocean", css: "linear-gradient(to bottom right, #0e7490, #0284c7, #1d4ed8)" },
+  { id: "aurora", name: "Aurora", css: "linear-gradient(to bottom right, #10b981, #3b82f6, #8b5cf6)" },
+  { id: "midnight", name: "Midnight", css: "linear-gradient(to bottom right, #0f172a, #1e293b, #334155)" },
+  { id: "cotton-candy", name: "Cotton Candy", css: "linear-gradient(to bottom right, #fbc2eb, #a6c1ee, #c2e9fb)" },
+  { id: "cyber", name: "Cyberpunk", css: "linear-gradient(to bottom right, #ff00cc, #333399, #6600ff)" },
+  { id: "lime", name: "Neon Lime", css: "linear-gradient(to bottom right, #84ffc9, #aab2ff, #eca0ff)" },
+  { id: "gold", name: "Gold Dust", css: "linear-gradient(to bottom right, #bf953f, #fcf6ba, #b38728)" },
+  { id: "peach", name: "Soft Peach", css: "linear-gradient(to bottom right, #ffecd2, #fcb69f)" },
+  { id: "royal", name: "Royal Purple", css: "linear-gradient(to bottom right, #667eea, #764ba2)" },
+  { id: "cherry", name: "Cherry Blossom", css: "linear-gradient(to bottom right, #ffecd2, #fcb69f, #ee9ca7)" },
+  { id: "arctic", name: "Arctic", css: "linear-gradient(to bottom right, #e0eafc, #cfdef3)" },
+  { id: "fire", name: "Fire", css: "linear-gradient(to bottom right, #f12711, #f5af19)" },
+  { id: "forest", name: "Forest", css: "linear-gradient(to bottom right, #134e5e, #71b280)" },
+  { id: "berry", name: "Berry", css: "linear-gradient(to bottom right, #8e2de2, #4a00e0)" },
+  { id: "coral", name: "Coral Reef", css: "linear-gradient(to bottom right, #ff9a9e, #fecfef, #fecfef)" },
+  { id: "slate-gray", name: "Slate Gray", css: "linear-gradient(to bottom right, #bdc3c7, #2c3e50)" },
+  { id: "warm", name: "Warm Glow", css: "linear-gradient(to bottom right, #f093fb, #f5576c)" },
 ];
 
 // Solid Colors
@@ -58,7 +58,7 @@ const SOLID_COLORS = [
 ];
 
 // Collapsible Section Component
-const CollapsibleSection = ({ title, children, defaultOpen = true }: any) => {
+const CollapsibleSection = ({ title, children, defaultOpen = true }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   return (
     <div className="border-b border-gray-100 last:border-0">
@@ -85,7 +85,7 @@ export default function Home() {
   const [borderRadius, setBorderRadius] = useState(12);
   const [shadow, setShadow] = useState(25);
   const [backgroundType, setBackgroundType] = useState<"gradient" | "solid">("gradient");
-  const [selectedGradient, setSelectedGradient] = useState(GRADIENTS[1]); // Mint Fresh default
+  const [selectedGradient, setSelectedGradient] = useState(GRADIENTS[1]);
   const [selectedColor, setSelectedColor] = useState(SOLID_COLORS[0]);
 
   const previewRef = useRef<HTMLDivElement>(null);
@@ -109,7 +109,18 @@ export default function Home() {
     if (!previewRef.current || !image) return;
     setIsExporting(true);
     try {
-      const dataUrl = await toPng(previewRef.current, { quality: 1, pixelRatio: 3 });
+      // Get the actual rendered dimensions
+      const node = previewRef.current;
+      const rect = node.getBoundingClientRect();
+
+      const dataUrl = await toPng(node, {
+        quality: 1,
+        pixelRatio: 2,
+        width: rect.width,
+        height: rect.height,
+        cacheBust: true,
+      });
+
       const link = document.createElement("a");
       link.download = `shotify-export-${Date.now()}.png`;
       link.href = dataUrl;
@@ -126,6 +137,13 @@ export default function Home() {
   const getShadowStyle = () => {
     const s = shadow * 1.5;
     return `0 ${s / 3}px ${s}px rgba(0, 0, 0, 0.35), 0 ${s / 6}px ${s / 2}px rgba(0, 0, 0, 0.15)`;
+  };
+
+  const getBackgroundStyle = () => {
+    if (backgroundType === "solid") {
+      return selectedColor.color;
+    }
+    return selectedGradient.css;
   };
 
   return (
@@ -178,22 +196,23 @@ export default function Home() {
                 <p className="text-gray-500 font-medium">Drop image or click to upload</p>
               </div>
             ) : (
-              <div className="w-full max-h-[70vh] overflow-auto rounded-2xl">
+              /* Scrollable viewport wrapper - NOT part of export */
+              <div className="w-full overflow-auto rounded-2xl" style={{ maxHeight: "70vh" }}>
+                {/* Export target - uses inline styles only for reliable capture */}
                 <div
                   ref={previewRef}
-                  className={`inline-flex items-center justify-center ${backgroundType === "gradient" ? selectedGradient.class : ""}`}
                   style={{
+                    display: "inline-block",
                     padding: `${padding}px`,
-                    background: backgroundType === "solid" ? selectedColor.color : undefined,
+                    background: getBackgroundStyle(),
                     minWidth: "100%",
+                    boxSizing: "border-box",
                   }}
                 >
                   <img
                     src={image}
                     alt="Preview"
                     style={{
-                      maxWidth: "100%",
-                      height: "auto",
                       display: "block",
                       borderRadius: `${borderRadius}px`,
                       boxShadow: getShadowStyle(),
@@ -216,18 +235,32 @@ export default function Home() {
                   Switch to {backgroundType === "gradient" ? "Solid Colors" : "Gradients"}
                 </button>
                 <div className="grid grid-cols-6 sm:grid-cols-5 gap-2">
-                  {(backgroundType === "gradient" ? GRADIENTS : SOLID_COLORS).map(opt => (
-                    <button
-                      key={opt.id}
-                      onClick={() => backgroundType === "gradient" ? setSelectedGradient(opt as any) : setSelectedColor(opt as any)}
-                      className={`aspect-square rounded-full border-2 transition-all hover:scale-110 ${(backgroundType === "gradient" ? selectedGradient.id : selectedColor.id) === opt.id
-                        ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
-                        : "border-gray-200"
-                        } ${backgroundType === "gradient" ? (opt as any).class : ""}`}
-                      style={backgroundType === "solid" ? { background: (opt as any).color } : {}}
-                      title={opt.name}
-                    />
-                  ))}
+                  {backgroundType === "gradient"
+                    ? GRADIENTS.map(opt => (
+                      <button
+                        key={opt.id}
+                        onClick={() => setSelectedGradient(opt)}
+                        className={`aspect-square rounded-full border-2 transition-all hover:scale-110 ${selectedGradient.id === opt.id
+                            ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
+                            : "border-gray-200"
+                          }`}
+                        style={{ background: opt.css }}
+                        title={opt.name}
+                      />
+                    ))
+                    : SOLID_COLORS.map(opt => (
+                      <button
+                        key={opt.id}
+                        onClick={() => setSelectedColor(opt)}
+                        className={`aspect-square rounded-full border-2 transition-all hover:scale-110 ${selectedColor.id === opt.id
+                            ? "ring-2 ring-blue-600 ring-offset-2 border-transparent"
+                            : "border-gray-200"
+                          }`}
+                        style={{ background: opt.color }}
+                        title={opt.name}
+                      />
+                    ))
+                  }
                 </div>
               </div>
             </CollapsibleSection>
