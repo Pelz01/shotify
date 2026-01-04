@@ -209,11 +209,9 @@ export default function Home() {
         }}
       />
 
-      {/* Centered Container for ALL content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
-
-        {/* Header - Inside Container */}
-        <header className="flex items-center justify-between mb-6 sm:mb-10">
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <span className="font-bold text-base sm:text-lg text-black">
             Shotify by <span className="text-blue-600">Pelz</span>
           </span>
@@ -224,7 +222,11 @@ export default function Home() {
           >
             <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Download
           </button>
-        </header>
+        </div>
+      </header>
+
+      {/* Main Content Container */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
 
         {/* Main Layout: Preview + Controls */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
@@ -274,7 +276,7 @@ export default function Home() {
           </div>
 
           {/* Controls Panel - Right Side on desktop, Below on mobile */}
-          <div className="w-full lg:w-72 shrink-0 bg-gray-50 lg:bg-transparent rounded-xl p-4 lg:p-0">
+          <div className="w-full lg:w-80 shrink-0 bg-gray-50 lg:bg-transparent rounded-xl p-4 lg:p-0 lg:pr-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
 
             <CollapsibleSection title="BACKGROUND" defaultOpen={false}>
               <div className="space-y-3">
