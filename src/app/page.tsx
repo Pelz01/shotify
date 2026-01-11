@@ -139,6 +139,7 @@ export default function Home() {
   const [selectedColor, setSelectedColor] = useState(SOLID_COLORS[0]);
 
   const previewRef = useRef<HTMLDivElement>(null);
+  const exportRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = useCallback((file: File | null) => {
@@ -156,18 +157,18 @@ export default function Home() {
   }, [handleFileChange]);
 
   const handleExport = useCallback(async () => {
-    if (!previewRef.current || !image) return;
+    if (!exportRef.current || !image) return;
     setIsExporting(true);
     try {
-      // Get the actual rendered dimensions
-      const node = previewRef.current;
-      const rect = node.getBoundingClientRect();
+      // Get the actual rendered dimensions of the export container
+      const node = exportRef.current;
+
+      // We need to temporarily ensure it's visible to calculations but hidden from view
+      // Since it's fixed/absolute off-screen, it should be fine.
 
       const dataUrl = await toPng(node, {
         quality: 1,
-        pixelRatio: 2,
-        width: rect.width,
-        height: rect.height,
+        pixelRatio: 2, // 2x is usually enough for high res if base is natural size
         cacheBust: true,
       });
 
@@ -248,17 +249,16 @@ export default function Home() {
                 <p className="text-gray-500 font-medium">Drop image or click to upload</p>
               </div>
             ) : (
-              /* Scrollable viewport wrapper - NOT part of export */
-              <div className="w-full overflow-auto rounded-2xl" style={{ maxHeight: "70vh" }}>
-                {/* Export target - uses inline styles only for reliable capture */}
+              /* Responsive Preview - Visible to User */
+              <div className="w-full flex justify-center overflow-x-auto">
                 <div
-                  ref={previewRef}
+                  className="rounded-2xl transition-all duration-300"
                   style={{
                     display: "inline-block",
-                    padding: `${padding}px`,
+                    padding: `clamp(16px, ${padding}px, min(${padding}px, 10vw))`,
                     background: getBackgroundStyle(),
-                    minWidth: "100%",
                     boxSizing: "border-box",
+                    maxWidth: "100%",
                   }}
                 >
                   <img
@@ -266,6 +266,35 @@ export default function Home() {
                     alt="Preview"
                     style={{
                       display: "block",
+                      maxWidth: "100%",
+                      width: "auto",
+                      height: "auto",
+                      borderRadius: `${borderRadius}px`,
+                      boxShadow: getShadowStyle(),
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Hidden Export Container - Natural Size for High Res Export */}
+            {image && (
+              <div className="fixed top-0 left-0 -z-50 opacity-0 pointer-events-none overflow-hidden" style={{ transform: 'translate(-9999px, -9999px)' }}>
+                <div
+                  ref={exportRef}
+                  style={{
+                    display: "inline-block",
+                    padding: `${padding}px`,
+                    background: getBackgroundStyle(),
+                    minWidth: "100%", // Match logic but allowed to be natural size
+                  }}
+                >
+                  <img
+                    src={image}
+                    alt="Export Target"
+                    style={{
+                      display: "block",
+                      // No maxWidth constraint here - uses natural size
                       borderRadius: `${borderRadius}px`,
                       boxShadow: getShadowStyle(),
                     }}
