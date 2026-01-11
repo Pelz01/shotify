@@ -250,30 +250,22 @@ export default function Home() {
               </div>
             ) : (
               /* Responsive Preview - Visible to User */
-              <div className="w-full flex justify-center overflow-x-auto">
-                <div
-                  className="rounded-2xl transition-all duration-300"
+              <div
+                className="w-full rounded-2xl"
+                style={{
+                  padding: `${Math.min(padding, 40)}px`,
+                  background: getBackgroundStyle(),
+                }}
+              >
+                <img
+                  src={image}
+                  alt="Preview"
+                  className="w-full h-auto block"
                   style={{
-                    display: "inline-block",
-                    padding: `clamp(16px, ${padding}px, min(${padding}px, 10vw))`,
-                    background: getBackgroundStyle(),
-                    boxSizing: "border-box",
-                    maxWidth: "100%",
+                    borderRadius: `${borderRadius}px`,
+                    boxShadow: getShadowStyle(),
                   }}
-                >
-                  <img
-                    src={image}
-                    alt="Preview"
-                    style={{
-                      display: "block",
-                      maxWidth: "100%",
-                      width: "auto",
-                      height: "auto",
-                      borderRadius: `${borderRadius}px`,
-                      boxShadow: getShadowStyle(),
-                    }}
-                  />
-                </div>
+                />
               </div>
             )}
 
